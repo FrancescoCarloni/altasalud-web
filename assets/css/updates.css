@@ -436,30 +436,40 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   animation: ambientZoom 28s ease-in-out infinite !important;
 }
 
-/* Overlay oscuro sobre la foto — mantiene legibilidad del texto */
+/* Overlay suave sobre la foto — aclarado para mostrar más la imagen */
 .hero-bg::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 10, 30, 0.62);
+  background: rgba(0, 10, 30, 0.28);
   z-index: 1;
   pointer-events: none;
 }
 
-/* Vignette: gradiente superior e inferior */
+/* Vignette suave: solo oscurece bordes superior e inferior */
 .hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,5,18,0.55) 0%,
-    transparent        20%,
-    transparent        72%,
-    rgba(0,5,18,0.90)  100%
+    rgba(0,5,18,0.35) 0%,
+    transparent        22%,
+    transparent        70%,
+    rgba(0,5,18,0.75)  100%
   );
   z-index: 2;
   pointer-events: none;
+}
+
+/* Hero overlay de main.css también aclarado */
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0,24,61,0.30) 0%,
+    rgba(0,24,61,0.15) 60%,
+    rgba(0,93,183,0.08) 100%
+  ) !important;
 }
 
 /* ─── Estructura base de cada forma ──────────────────────── */
@@ -1656,12 +1666,12 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   }
 
   .nos-slide.is-prev {
-    transform: scale(0.78) translateX(-18%) translateY(-3%) perspective(400px) rotateY(12deg) !important;
+    transform: scale(0.78) translateX(-18%) translateY(-3%) rotateY(12deg) !important;
     z-index: 5 !important;
   }
 
   .nos-slide.is-next {
-    transform: scale(0.78) translateX(18%) translateY(-3%) perspective(400px) rotateY(-12deg) !important;
+    transform: scale(0.78) translateX(18%) translateY(-3%) rotateY(-12deg) !important;
     z-index: 5 !important;
   }
 }
@@ -1685,7 +1695,7 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   position: relative;
   width: 100%;
   height: 100%;
-  /* sin preserve-3d: z-index funciona normalmente */
+  perspective: 1000px;   /* perspectiva aquí, NO en cada slide */
 }
 
 .nos-slide {
@@ -1717,19 +1727,19 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   z-index: 10;
 }
 
-/* Anterior: izquierda, visiblemente detrás */
+/* Anterior: izquierda, detrás — rotateY puro, perspectiva viene del padre */
 .nos-slide.is-prev {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(0.82) translateX(-22%) translateY(-5%) perspective(600px) rotateY(18deg);
+  transform: scale(0.82) translateX(-22%) translateY(-5%) rotateY(18deg);
   z-index: 5;
 }
 
-/* Siguiente: derecha, visiblemente detrás */
+/* Siguiente: derecha, detrás — ídem */
 .nos-slide.is-next {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(0.82) translateX(22%) translateY(-5%) perspective(600px) rotateY(-18deg);
+  transform: scale(0.82) translateX(22%) translateY(-5%) rotateY(-18deg);
   z-index: 5;
 }
 
@@ -1767,19 +1777,19 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   outline-offset: 2px;
 }
 
-/* Posicionar badge debajo del carrusel */
+/* Badge: esquina inferior-izquierda de la foto activa (igual que el diseño original) */
 .nos-carousel-outer .quienes-badge {
   position: absolute;
-  bottom: -60px;   /* debajo de los controles */
-  left: 0;
-  z-index: 10;
+  bottom: 16px;
+  left: 16px;
+  z-index: 20;   /* por encima de los slides (z-index: 10 activa, 5 laterales) */
 }
 
 /* ═══════════════════════════════════════════════════════════
    PSICOFÍSICO — service card expandida
 ═══════════════════════════════════════════════════════════ */
 .service-card--psicofisico {
-  grid-column: span 2;          /* ocupa 2 columnas en el grid */
+  grid-column: 1 / -1;   /* siempre ancho completo, independiente del nro. de columnas */
 }
 
 /* colores para fondo CLARO (sección servicios es blanca) */
@@ -1869,12 +1879,8 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   margin-top: 0.25rem;
 }
 
-/* en mobile la psicofísico ocupa 1 columna */
+/* psicofísico mobile — 1/-1 ya garantiza ancho completo, solo ajustar lista */
 @media (max-width: 720px) {
-  .service-card--psicofisico {
-    grid-column: span 1;
-  }
-
   .psico-exams-list {
     grid-template-columns: 1fr;
   }
