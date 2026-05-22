@@ -1,0 +1,1609 @@
+/* =========================================================
+   ALTA SALUD — updates.css  (Phase 2)
+   Alianza · Alta Complejidad · Psicometría · Novedades · Modal
+   ========================================================= */
+
+/* ─── ALIANZA ESTRATÉGICA ─────────────────────────────────── */
+.alianza {
+  padding: 5rem 0;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.alianza-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.alianza-header .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.alianza-header h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.alianza-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Carousel wrapper */
+.alianza-carousel {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.alianza-track-wrap {
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.alianza-track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.alianza-slide {
+  flex: 0 0 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 380px;
+}
+
+/* Text / glass side */
+.alianza-card--glass {
+  background: rgba(0, 24, 61, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 1.25rem 0 0 1.25rem;
+  border: 1px solid rgba(0, 93, 183, 0.25);
+  border-right: none;
+}
+
+.alianza-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.alianza-logo-wrap img,
+.alianza-logo-wrap svg {
+  height: 56px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.alianza-plus {
+  font-size: 2rem;
+  color: var(--accent);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.alianza-partner-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.alianza-tagline {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.alianza-detail {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.alianza-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.alianza-chip {
+  background: rgba(0, 209, 255, 0.12);
+  border: 1px solid rgba(0, 209, 255, 0.3);
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 2rem;
+}
+
+/* Image side */
+.alianza-card--image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 1.25rem 1.25rem 0;
+  min-height: 300px;
+  background: linear-gradient(135deg, #00183d 0%, #005db7 100%);
+}
+
+.alianza-card--image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.alianza-slide:hover .alianza-card--image img {
+  transform: scale(1.04);
+  opacity: 0.65;
+}
+
+.alianza-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,24,61,0.5) 0%, transparent 100%);
+}
+
+/* Carousel dots + nav */
+.alianza-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.alianza-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 24, 61, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  padding: 0;
+}
+
+.alianza-dot.active {
+  background: var(--secondary);
+  transform: scale(1.3);
+}
+
+.alianza-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,93,183,0.15);
+  color: var(--primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  z-index: 2;
+}
+
+.alianza-nav:hover {
+  background: var(--secondary);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0,93,183,0.3);
+}
+
+.alianza-nav--prev { left: -0.5rem; }
+.alianza-nav--next { right: -0.5rem; }
+
+/* ─── LOGOS (PNG real) ────────────────────────────────────── */
+.nav-logo-white {
+  filter: brightness(0) invert(1);
+}
+
+.footer-logo {
+  filter: brightness(0) invert(1);
+}
+
+.splash-logo {
+  max-width: 200px;
+  height: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAV — GLASSMORPHIC SOBRE FONDO ANIMADO
+   El nav es transparente: los orbs del hero se ven a través
+═══════════════════════════════════════════════════════════ */
+@keyframes navScanLine {
+  0%   { transform: translateX(-110%); opacity: 0; }
+  8%   { opacity: 1; }
+  88%  { opacity: 0.55; }
+  100% { transform: translateX(110%); opacity: 0; }
+}
+
+.nav,
+.nav.nav--scrolled {
+  background: rgba(0, 10, 28, 0.38) !important;
+  backdrop-filter: blur(22px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(160%) !important;
+  border-bottom: 1px solid rgba(0, 209, 255, 0.11) !important;
+  box-shadow: 0 2px 28px rgba(0, 0, 0, 0.22) !important;
+  animation: none !important;
+  overflow: hidden;
+}
+
+/* Línea de escaneo sutil sobre el borde inferior */
+.nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  width: 55%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 209, 255, 0.28) 20%,
+    rgba(0, 209, 255, 0.85) 50%,
+    rgba(0, 209, 255, 0.28) 80%,
+    transparent 100%
+  );
+  animation: navScanLine 7s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation-delay: 2s;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Texto blanco sobre fondo oscuro */
+.nav .nav-link {
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+.nav .nav-link:hover,
+.nav .nav-link.active {
+  color: var(--accent) !important;
+}
+
+.nav-hamburger span {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* ─── HERO TITLE — Barlow Condensed (igual al logo) ─────────── */
+.hero-title {
+  font-family: 'Barlow Condensed', 'Syne', sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.08 !important;
+}
+
+/* "corporativa." — neutraliza el gradient-clip de main.css que lo vuelve invisible */
+.hero-title em {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: var(--accent, #00D1FF) !important;
+  color: var(--accent, #00D1FF) !important;
+  font-style: italic !important;
+}
+
+/* ─── CURSOR ANIMADO — DESACTIVADO, CURSOR PREDETERMINADO ─── */
+.cursor-dot,
+.cursor-ring {
+  display: none !important;
+}
+
+*,
+*::before,
+*::after {
+  cursor: auto !important;
+}
+
+a, button, [role="button"], [tabindex], input, select, textarea, label {
+  cursor: pointer !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO — GEOMETRIC BACKGROUND (Elegant Shapes)
+   Traducción CSS pura del componente React/Framer Motion
+═══════════════════════════════════════════════════════════ */
+
+/* dotDrift + orbDrift1 se mantienen — los usa la splash screen */
+@keyframes dotDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 48px 48px; }
+}
+@keyframes orbDrift1 {
+  0%,100% { transform: translate(0px, 0px)   scale(1); }
+  30%     { transform: translate(60px,-80px)  scale(1.1); }
+  65%     { transform: translate(-40px,50px)  scale(0.92); }
+}
+
+/* ─── Entradas: caída + rotación final (1 por forma) ─────── */
+@keyframes geoEntry1 {
+  0%   { opacity: 0; transform: translateY(-150px) rotate(-3deg);  }
+  100% { opacity: 1; transform: translateY(0)      rotate(12deg);  }
+}
+@keyframes geoEntry2 {
+  0%   { opacity: 0; transform: translateY(-150px) rotate(-30deg); }
+  100% { opacity: 1; transform: translateY(0)      rotate(-15deg); }
+}
+@keyframes geoEntry3 {
+  0%   { opacity: 0; transform: translateY(-150px) rotate(-23deg); }
+  100% { opacity: 1; transform: translateY(0)      rotate(-8deg);  }
+}
+@keyframes geoEntry4 {
+  0%   { opacity: 0; transform: translateY(-150px) rotate(5deg);   }
+  100% { opacity: 1; transform: translateY(0)      rotate(20deg);  }
+}
+@keyframes geoEntry5 {
+  0%   { opacity: 0; transform: translateY(-150px) rotate(-40deg); }
+  100% { opacity: 1; transform: translateY(0)      rotate(-25deg); }
+}
+
+/* ─── Float individual por forma: traslación + rotación ─────
+   El inner se mueve independiente de la rotación de entrada ─ */
+@keyframes geoFloat1 {
+  0%   { transform: translate(0px,   0px)  rotate(0deg)   scale(1);    }
+  18%  { transform: translate(30px,  38px) rotate(3.5deg) scale(1.06); }
+  42%  { transform: translate(-18px, 52px) rotate(-2deg)  scale(1.03); }
+  68%  { transform: translate(38px,  22px) rotate(4.5deg) scale(1.07); }
+  85%  { transform: translate(-10px, 14px) rotate(-1deg)  scale(1.01); }
+  100% { transform: translate(0px,   0px)  rotate(0deg)   scale(1);    }
+}
+@keyframes geoFloat2 {
+  0%   { transform: translate(0px,   0px)  rotate(0deg)    scale(1);    }
+  25%  { transform: translate(-32px, 28px) rotate(-3.5deg) scale(1.05); }
+  50%  { transform: translate(20px,  44px) rotate(2.5deg)  scale(1.08); }
+  75%  { transform: translate(-14px, 18px) rotate(-1.5deg) scale(1.02); }
+  100% { transform: translate(0px,   0px)  rotate(0deg)    scale(1);    }
+}
+@keyframes geoFloat3 {
+  0%   { transform: translate(0px,   0px)  rotate(0deg)   scale(1);    }
+  20%  { transform: translate(22px,  34px) rotate(4deg)   scale(1.06); }
+  45%  { transform: translate(-28px, 46px) rotate(-3deg)  scale(1.04); }
+  65%  { transform: translate(-16px, 20px) rotate(-3.5deg)scale(1.02); }
+  80%  { transform: translate(10px,  10px) rotate(1.5deg) scale(1.01); }
+  100% { transform: translate(0px,   0px)  rotate(0deg)   scale(1);    }
+}
+@keyframes geoFloat4 {
+  0%   { transform: translate(0px,   0px)  rotate(0deg)  scale(1);    }
+  30%  { transform: translate(-22px, 26px) rotate(5deg)  scale(1.07); }
+  60%  { transform: translate(26px,  38px) rotate(-4deg) scale(1.05); }
+  80%  { transform: translate(8px,   12px) rotate(2deg)  scale(1.02); }
+  100% { transform: translate(0px,   0px)  rotate(0deg)  scale(1);    }
+}
+@keyframes geoFloat5 {
+  0%   { transform: translate(0px,  0px)   rotate(0deg)    scale(1);    }
+  35%  { transform: translate(18px, 28px)  rotate(-4deg)   scale(1.06); }
+  65%  { transform: translate(-14px,20px)  rotate(3deg)    scale(1.04); }
+  85%  { transform: translate(6px,  8px)   rotate(-1.5deg) scale(1.01); }
+  100% { transform: translate(0px,  0px)   rotate(0deg)    scale(1);    }
+}
+
+/* ─── Fondo base ──────────────────────────────────────────── */
+.hero-bg {
+  background: #030303 !important;
+  overflow: hidden !important;
+}
+
+/* Gradient ambiental indigo ↔ rose (muy sutil) */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 12% 50%, rgba(99,102,241,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 55% at 88% 50%, rgba(244,63,94,0.10)  0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Vignette: oscurece arriba y abajo */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(3,3,3,0.72) 0%,
+    transparent       16%,
+    transparent       78%,
+    rgba(3,3,3,0.95)  100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Estructura base de cada forma ──────────────────────── */
+.geo-shape {
+  position: absolute;
+  animation-fill-mode: both;
+}
+
+/* Cada inner tiene su propio ritmo y trayectoria */
+.geo-shape--1 .geo-shape-inner { animation: geoFloat1 14s ease-in-out infinite; }
+.geo-shape--2 .geo-shape-inner { animation: geoFloat2 19s ease-in-out infinite; animation-delay: -4s; }
+.geo-shape--3 .geo-shape-inner { animation: geoFloat3 22s ease-in-out infinite; animation-delay: -9s; }
+.geo-shape--4 .geo-shape-inner { animation: geoFloat4 11s ease-in-out infinite; animation-delay: -2s; }
+.geo-shape--5 .geo-shape-inner { animation: geoFloat5 16s ease-in-out infinite; animation-delay: -6s; }
+
+/* Cuerpo visual: píldora semi-transparente con borde y glow */
+.geo-shape-body {
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.28);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow:
+    0 8px 32px 0 rgba(255,255,255,0.14),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  position: relative;
+}
+
+/* Brillo interno radial */
+.geo-shape-body::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.26), transparent 70%);
+}
+
+/* ─ Forma 1: Índigo · 600×140 · 12° ─ */
+.geo-shape--1 {
+  left: -10%;
+  top: 20%;
+  animation: geoEntry1 2.4s 0.3s cubic-bezier(0.23, 0.86, 0.39, 0.96) both;
+}
+.geo-shape--1 .geo-shape-body {
+  width: 600px; height: 140px;
+  background: linear-gradient(to right, rgba(99,102,241,0.30), transparent);
+}
+
+/* ─ Forma 2: Rosa · 500×120 · -15° ─ */
+.geo-shape--2 {
+  right: -5%;
+  top: 75%;
+  animation: geoEntry2 2.4s 0.5s cubic-bezier(0.23, 0.86, 0.39, 0.96) both;
+}
+.geo-shape--2 .geo-shape-body {
+  width: 500px; height: 120px;
+  background: linear-gradient(to right, rgba(244,63,94,0.30), transparent);
+}
+
+/* ─ Forma 3: Violeta · 300×80 · -8° ─ */
+.geo-shape--3 {
+  left: 10%;
+  bottom: 10%;
+  animation: geoEntry3 2.4s 0.4s cubic-bezier(0.23, 0.86, 0.39, 0.96) both;
+}
+.geo-shape--3 .geo-shape-body {
+  width: 300px; height: 80px;
+  background: linear-gradient(to right, rgba(139,92,246,0.30), transparent);
+}
+
+/* ─ Forma 4: Ámbar · 200×60 · 20° ─ */
+.geo-shape--4 {
+  right: 20%;
+  top: 15%;
+  animation: geoEntry4 2.4s 0.6s cubic-bezier(0.23, 0.86, 0.39, 0.96) both;
+}
+.geo-shape--4 .geo-shape-body {
+  width: 200px; height: 60px;
+  background: linear-gradient(to right, rgba(245,158,11,0.30), transparent);
+}
+
+/* ─ Forma 5: Cyan · 150×40 · -25° ─ */
+.geo-shape--5 {
+  left: 25%;
+  top: 10%;
+  animation: geoEntry5 2.4s 0.7s cubic-bezier(0.23, 0.86, 0.39, 0.96) both;
+}
+.geo-shape--5 .geo-shape-body {
+  width: 150px; height: 40px;
+  background: linear-gradient(to right, rgba(6,182,212,0.30), transparent);
+}
+
+/* ─── AC-FEATURED con foto de fondo ──────────────────────── */
+.ac-featured {
+  position: relative;
+}
+
+.ac-featured-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.ac-featured-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  transition: opacity 0.4s;
+}
+
+.ac-featured:hover .ac-featured-bg img {
+  opacity: 0.7;
+}
+
+/* Gradient overlay: imagen visible arriba, texto legible abajo */
+.ac-featured-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 24, 61, 0.1)  0%,
+    rgba(0, 24, 61, 0.25) 40%,
+    rgba(0, 24, 61, 0.75) 75%,
+    rgba(0, 24, 61, 0.92) 100%
+  );
+}
+
+.ac-featured > *:not(.ac-featured-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── SERVICIO REID — tarjeta destacada ──────────────────── */
+.service-card--reid {
+  background: linear-gradient(135deg, #00183d 0%, #002a6e 100%);
+  color: #fff;
+  border: 1px solid rgba(0, 209, 255, 0.2);
+}
+
+.service-card--reid .service-card-img-wrap {
+  background: rgba(0, 24, 61, 0.5);
+}
+
+.service-card--reid .service-card-img-wrap img {
+  opacity: 0.85;
+  mix-blend-mode: luminosity;
+}
+
+.service-card--reid .service-title {
+  color: #fff;
+}
+
+.service-card--reid .service-desc {
+  color: rgba(255,255,255,0.72);
+}
+
+.service-card--reid .service-icon {
+  color: var(--accent);
+}
+
+.reid-exclusive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--accent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  margin-top: 0.75rem;
+  width: fit-content;
+}
+
+.reid-exclusive-badge svg {
+  flex-shrink: 0;
+}
+
+/* ─── NOVEDAD REID ────────────────────────────────────────── */
+.novedad-badge--exclusive {
+  background: var(--accent);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ─── ALTA COMPLEJIDAD — rediseño moderno ─────────────────── */
+.alta-complejidad {
+  padding: 5.5rem 0;
+  background: linear-gradient(160deg, #00183d 0%, #002a6e 55%, #00183d 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative grid lines */
+.alta-complejidad::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,209,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,209,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.alta-complejidad .section-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.ac-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.ac-partner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(0, 209, 255, 0.08);
+  border: 1px solid rgba(0, 209, 255, 0.2);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.ac-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+}
+
+.ac-subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* Layout: featured + side */
+.ac-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ─ Featured card: Resonador 3T ─ */
+.ac-featured {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,209,255,0.2);
+  border-radius: 1.25rem;
+  padding: 2.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.ac-featured::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,209,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ac-featured:hover {
+  border-color: rgba(0,209,255,0.4);
+  box-shadow: 0 0 40px rgba(0,209,255,0.08);
+}
+
+.ac-featured-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--accent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  width: fit-content;
+}
+
+.ac-featured-icon {
+  color: rgba(0,209,255,0.7);
+  line-height: 0;
+}
+
+.ac-featured-body h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.ac-featured-spec {
+  color: var(--accent);
+}
+
+.ac-featured-body p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+  margin: 0 0 1.25rem;
+}
+
+.ac-featured-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ac-featured-specs span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+/* ─ 4 side cards ─ */
+.ac-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ac-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+
+.ac-item:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(0,209,255,0.18);
+  transform: translateY(-3px);
+}
+
+.ac-item-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 0.625rem;
+  background: rgba(0,93,183,0.25);
+  border: 1px solid rgba(0,93,183,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0,209,255,0.8);
+  flex-shrink: 0;
+}
+
+.ac-item-body h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.3rem;
+}
+
+.ac-item-body p {
+  font-size: 0.77rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+  margin: 0 0 0.5rem;
+}
+
+.ac-item-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: rgba(0,209,255,0.08);
+  border: 1px solid rgba(0,209,255,0.2);
+  padding: 0.18rem 0.55rem;
+  border-radius: 2rem;
+}
+
+/* Footer note */
+.ac-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  margin: 2.5rem auto 0;
+  max-width: 600px;
+  padding: 0 1.5rem;
+}
+
+/* ─── PSICOMETRÍA FEATURED CARD ───────────────────────────── */
+.service-card--full {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.service-card--psico .psico-header {
+  padding: 2.5rem 2.5rem 0;
+}
+
+.service-card--psico .service-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-card--psico .service-card-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-card--psico .service-card-desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Two-column inner layout */
+.psico-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  grid-column: 1 / -1;
+}
+
+.psico-left {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-right: 1px solid rgba(0,93,183,0.1);
+}
+
+.psico-right {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.psico-areas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.psico-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 93, 183, 0.04);
+  border-left: 3px solid var(--secondary);
+  transition: background 0.2s;
+}
+
+.psico-area:hover {
+  background: rgba(0, 93, 183, 0.08);
+}
+
+.psico-area-icon {
+  font-size: 1.25rem;
+  width: 28px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.psico-area-info h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 0.1rem;
+}
+
+.psico-area-info p {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.psico-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.psico-meta-item {
+  text-align: center;
+  padding: 0.9rem;
+  background: rgba(0, 93, 183, 0.05);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 93, 183, 0.1);
+}
+
+.psico-meta-value {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--secondary);
+  line-height: 1.2;
+}
+
+.psico-meta-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.psico-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  padding: 0.3rem 0.8rem;
+  border-radius: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.psico-usos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.psico-uso {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  line-height: 1.45;
+}
+
+.psico-uso::before {
+  content: '→';
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  flex-shrink: 0;
+  margin-top: 0.05em;
+}
+
+.psico-section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 0.25rem;
+}
+
+/* ─── NOVEDADES ───────────────────────────────────────────── */
+.novedades {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.novedades-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.novedades-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.novedad-card {
+  background: #fff;
+  border: 1px solid rgba(0, 93, 183, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.novedad-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 93, 183, 0.1);
+}
+
+.novedad-card.featured {
+  border-color: rgba(0, 93, 183, 0.25);
+  box-shadow: 0 4px 24px rgba(0, 93, 183, 0.08);
+}
+
+.novedad-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.novedad-card.featured .novedad-img {
+  height: 220px;
+}
+
+.novedad-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.65;
+  transition: transform 0.5s ease;
+}
+
+.novedad-card:hover .novedad-img img {
+  transform: scale(1.04);
+}
+
+.novedad-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,24,61,0.7) 0%, transparent 60%);
+}
+
+.novedad-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--secondary);
+  padding: 0.25rem 0.65rem;
+  border-radius: 2rem;
+}
+
+.novedad-card.featured .novedad-tag {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.novedad-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.novedad-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.novedad-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.novedad-card.featured .novedad-title {
+  font-size: 1.2rem;
+}
+
+.novedad-excerpt {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.novedad-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0, 93, 183, 0.08);
+  transition: gap 0.2s;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.novedad-btn:hover {
+  gap: 0.75rem;
+  color: var(--primary);
+}
+
+/* ─── AUDITORÍA MODAL ─────────────────────────────────────── */
+.auditoria-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.auditoria-modal[hidden] {
+  display: none;
+}
+
+.auditoria-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 24, 61, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  animation: backdropIn 0.3s ease forwards;
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.auditoria-modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  max-width: 560px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(0, 24, 61, 0.25);
+  animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.auditoria-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 93, 183, 0.15);
+  background: rgba(0, 93, 183, 0.05);
+  color: var(--primary);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.auditoria-modal-close:hover {
+  background: var(--secondary);
+  color: #fff;
+  border-color: var(--secondary);
+}
+
+.modal-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e8f0fe 0%, #d0e4ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modal-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.modal-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+}
+
+.modal-aspects-wrap {
+  background: rgba(0, 93, 183, 0.04);
+  border: 1px solid rgba(0, 93, 183, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.modal-aspects-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin: 0 0 0.75rem;
+}
+
+.modal-aspects {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.modal-aspects li {
+  font-size: 0.85rem;
+  color: var(--primary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.45;
+}
+
+.modal-aspects li::before {
+  content: '✓';
+  color: var(--secondary);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.05em;
+}
+
+.modal-footer-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-top: 1px solid rgba(0, 93, 183, 0.08);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Hint text on auditoría items */
+.prestacion-hint {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-top: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.prestacion-item:hover .prestacion-hint,
+.prestacion-item:focus .prestacion-hint {
+  opacity: 1;
+}
+
+.prestacion-item[data-modal-id] {
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.prestacion-item[data-modal-id]:hover {
+  background: rgba(0, 93, 183, 0.06);
+  transform: translateX(4px);
+}
+
+.prestacion-item[data-modal-id]:focus {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SPLASH — REDISEÑO PREMIUM DARK
+   Fondo oscuro + orb + grilla + logo blur-reveal + barra glow
+═══════════════════════════════════════════════════════════ */
+
+/* Fondo igual al hero */
+.splash {
+  background: #030303 !important;
+}
+
+/* Grilla de puntos en movimiento (reutiliza dotDrift) */
+.splash::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: radial-gradient(circle, rgba(0,209,255,0.16) 1px, transparent 1px) !important;
+  background-size: 48px 48px !important;
+  animation: dotDrift 22s linear infinite !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Orb de fondo top-left */
+.splash::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 560px !important;
+  height: 560px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle, rgba(0,93,183,0.28) 0%, transparent 70%) !important;
+  filter: blur(90px) !important;
+  top: -180px !important;
+  left: -160px !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  animation: orbDrift1 22s ease-in-out infinite !important;
+}
+
+/* Inner — z-index por encima del fondo */
+.splash-inner {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* ─── LOGO: entra con blur → nitidez ─────────────────────── */
+@keyframes splashLogoIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.92);
+    filter: brightness(0) invert(1) blur(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: brightness(0) invert(1) blur(0px);
+  }
+}
+
+.splash-logo {
+  animation: splashLogoIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both !important;
+  max-width: 200px !important;
+}
+
+/* ─── BARRA DE PROGRESO — línea cyan brillante ───────────── */
+.splash-bar-wrap {
+  width: 150px !important;
+  height: 2px !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-radius: 2px !important;
+  overflow: hidden !important;
+}
+
+@keyframes splashLoad {
+  0%   { width:  0%;  }
+  15%  { width: 20%;  }
+  40%  { width: 52%;  }
+  70%  { width: 79%;  }
+  88%  { width: 93%;  }
+  100% { width: 100%; }
+}
+
+.splash-bar {
+  height: 100% !important;
+  width: 0% !important;
+  background: #00D1FF !important;
+  box-shadow:
+    0 0 10px rgba(0, 209, 255, 0.95),
+    0 0 22px rgba(0, 209, 255, 0.45),
+    0 0 40px rgba(0, 209, 255, 0.2) !important;
+  border-radius: 2px !important;
+  animation: splashLoad 3s cubic-bezier(0.4, 0, 0.2, 1) 0.55s forwards !important;
+}
+
+/* ─── TAGLINE — aparece con expansión de tracking ────────── */
+@keyframes splashTagIn {
+  from { opacity: 0; letter-spacing: 0.35em; }
+  to   { opacity: 0.42; letter-spacing: 0.25em; }
+}
+
+.splash-tagline {
+  color: rgba(255, 255, 255, 0.42) !important;
+  letter-spacing: 0.25em !important;
+  animation: splashTagIn 1s ease 0.75s both !important;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+
+/* 1024px — tablet landscape */
+@media (max-width: 1024px) {
+  .ac-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ac-side {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .novedades-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .novedades-grid .novedad-card.featured {
+    grid-column: 1 / -1;
+  }
+
+  .psico-content {
+    grid-template-columns: 1fr;
+  }
+
+  .psico-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 93, 183, 0.1);
+  }
+
+  .alianza-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .alianza-card--glass {
+    border-radius: 1.25rem 1.25rem 0 0;
+    border-right: 1px solid rgba(0, 93, 183, 0.25);
+    border-bottom: none;
+  }
+
+  .alianza-card--image {
+    border-radius: 0 0 1.25rem 1.25rem;
+    min-height: 220px;
+  }
+}
+
+/* 720px — tablet portrait */
+@media (max-width: 720px) {
+  .ac-side {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .novedades-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .novedades-grid .novedad-card.featured {
+    grid-column: 1;
+  }
+
+  .service-card--full {
+    grid-column: auto;
+  }
+
+  .psico-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .alianza-carousel {
+    padding: 0 3rem;
+  }
+
+  .alianza-nav--prev { left: 0.25rem; }
+  .alianza-nav--next { right: 0.25rem; }
+
+  .auditoria-modal-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .modal-title {
+    font-size: 1.15rem;
+  }
+}
+
+/* 540px — mobile */
+@media (max-width: 540px) {
+  .ac-side {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .ac-featured {
+    padding: 2rem 1.5rem;
+  }
+
+  .ac-item {
+    padding: 1.25rem;
+  }
+
+  .alianza-card--glass {
+    padding: 2rem 1.5rem;
+  }
+
+  .alianza-logo-wrap img,
+  .alianza-logo-wrap svg {
+    height: 40px;
+  }
+
+  .psico-left,
+  .psico-right {
+    padding: 1.5rem;
+  }
+
+  .psico-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .novedad-body {
+    padding: 1.25rem;
+  }
+
+  .alianza-nav {
+    display: none;
+  }
+}
