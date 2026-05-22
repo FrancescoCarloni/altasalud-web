@@ -1771,104 +1771,17 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   PSICOFÍSICO — service card expandida
+   PSICOFÍSICO — service card ancho completo
 ═══════════════════════════════════════════════════════════ */
 .service-card--psicofisico {
-  grid-column: 1 / -1;   /* siempre ancho completo, independiente del nro. de columnas */
+  grid-column: 1 / -1;
 }
 
-/* colores para fondo CLARO (sección servicios es blanca) */
-.psico-hab-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--secondary, #005db7);
-  background: rgba(0, 93, 183, 0.08);
-  border: 1px solid rgba(0, 93, 183, 0.28);
-  padding: 0.3rem 0.8rem;
-  border-radius: 2rem;
-  margin: 0.5rem 0 0.75rem;
-}
-
-.psico-exams-list {
-  list-style: none;
-  padding: 0;
-  margin: 0.75rem 0 1rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.35rem 1.5rem;
-}
-
-.psico-exams-list li {
-  font-size: 0.83rem;
+.psico-detail {
+  font-size: 0.85rem;
   color: var(--on-surface-variant, #44474f);
-  padding-left: 1rem;
-  position: relative;
-}
-
-.psico-exams-list li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--secondary, #005db7);
-  font-size: 0.7rem;
-}
-
-.psico-exams-sub {
-  font-size: 0.74rem;
-  color: var(--on-surface-variant, #44474f);
-  opacity: 0.75;
-}
-
-.psico-info-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  margin: 0.75rem 0;
-  padding: 0.85rem 1rem;
-  background: rgba(0, 24, 61, 0.04);
-  border: 1px solid var(--outline, #e0e3e5);
-  border-radius: 0.75rem;
-}
-
-.psico-info-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  font-size: 0.82rem;
-  color: var(--on-surface-variant, #44474f);
-  line-height: 1.5;
-}
-
-.psico-info-row svg {
-  flex-shrink: 0;
-  margin-top: 0.15rem;
-  color: var(--secondary, #005db7);
-}
-
-.psico-no-turno {
-  display: inline-block;
-  font-family: 'Syne', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--secondary, #005db7);
-  background: rgba(0, 93, 183, 0.08);
-  border: 1px solid rgba(0, 93, 183, 0.28);
-  padding: 0.3rem 0.85rem;
-  border-radius: 2rem;
-  margin-top: 0.25rem;
-}
-
-/* psicofísico mobile — 1/-1 ya garantiza ancho completo, solo ajustar lista */
-@media (max-width: 720px) {
-  .psico-exams-list {
-    grid-template-columns: 1fr;
-  }
+  margin-top: 0.75rem;
+  line-height: 1.7;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1877,30 +1790,17 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 ═══════════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
 
-  /* ── Psicofísico: forzar ancho completo ── */
-  .service-card--psicofisico {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    grid-column: 1 / -1 !important;
-  }
-  .service-card--psicofisico .service-card-body {
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .psico-info-block {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
   /* ── Carrusel: slider plano, un slide a la vez ── */
+  /* outer: height auto + overflow visible → los botones quedan visibles */
   .nos-carousel-outer {
-    height: 280px !important;     /* altura razonable en mobile */
-    overflow: hidden !important;  /* el outer también recorta */
+    height: auto !important;
+    overflow: visible !important;
   }
 
+  /* inner: height fijo + overflow hidden → recorta los slides */
   .nos-carousel {
-    overflow: hidden !important;  /* recorta slides fuera de pantalla */
+    height: 280px !important;
+    overflow: hidden !important;
     perspective: none !important;
   }
 
