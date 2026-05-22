@@ -1782,6 +1782,7 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   grid-column: span 2;          /* ocupa 2 columnas en el grid */
 }
 
+/* colores para fondo CLARO (sección servicios es blanca) */
 .psico-hab-badge {
   display: inline-flex;
   align-items: center;
@@ -1790,9 +1791,9 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent, #00D1FF);
-  background: rgba(0, 93, 183, 0.12);
-  border: 1px solid rgba(0, 93, 183, 0.35);
+  color: var(--secondary, #005db7);
+  background: rgba(0, 93, 183, 0.08);
+  border: 1px solid rgba(0, 93, 183, 0.28);
   padding: 0.3rem 0.8rem;
   border-radius: 2rem;
   margin: 0.5rem 0 0.75rem;
@@ -1809,7 +1810,7 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 
 .psico-exams-list li {
   font-size: 0.83rem;
-  color: rgba(255,255,255,0.78);
+  color: var(--on-surface-variant, #44474f);
   padding-left: 1rem;
   position: relative;
 }
@@ -1818,13 +1819,14 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--accent, #00D1FF);
+  color: var(--secondary, #005db7);
   font-size: 0.7rem;
 }
 
 .psico-exams-sub {
   font-size: 0.74rem;
-  color: rgba(255,255,255,0.50);
+  color: var(--on-surface-variant, #44474f);
+  opacity: 0.75;
 }
 
 .psico-info-block {
@@ -1833,8 +1835,8 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   gap: 0.45rem;
   margin: 0.75rem 0;
   padding: 0.85rem 1rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(0, 24, 61, 0.04);
+  border: 1px solid var(--outline, #e0e3e5);
   border-radius: 0.75rem;
 }
 
@@ -1843,14 +1845,14 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   align-items: flex-start;
   gap: 0.55rem;
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.72);
+  color: var(--on-surface-variant, #44474f);
   line-height: 1.5;
 }
 
 .psico-info-row svg {
   flex-shrink: 0;
   margin-top: 0.15rem;
-  color: var(--accent, #00D1FF);
+  color: var(--secondary, #005db7);
 }
 
 .psico-no-turno {
@@ -1859,9 +1861,9 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #fff;
-  background: rgba(0, 93, 183, 0.22);
-  border: 1px solid rgba(0, 93, 183, 0.4);
+  color: var(--secondary, #005db7);
+  background: rgba(0, 93, 183, 0.08);
+  border: 1px solid rgba(0, 93, 183, 0.28);
   padding: 0.3rem 0.85rem;
   border-radius: 2rem;
   margin-top: 0.25rem;
