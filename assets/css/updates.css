@@ -1116,7 +1116,7 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.65;
+  opacity: 1;
   transition: transform 0.5s ease;
 }
 
@@ -1127,7 +1127,7 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 .novedad-img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,24,61,0.7) 0%, transparent 60%);
+  background: none;
 }
 
 .novedad-tag {
@@ -1657,7 +1657,7 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 
   .nos-slide.is-prev,
   .nos-slide.is-next {
-    opacity: 0.5 !important;
+    opacity: 1 !important;
     transform: scale(0.78) rotateY(12deg) translateX(-18%) translateY(-3%) !important;
   }
 
@@ -1719,7 +1719,7 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 
 /* Anterior: izquierda atrás, rotada hacia la derecha (perspectiva) */
 .nos-slide.is-prev {
-  opacity: 0.65;
+  opacity: 1;
   pointer-events: auto;
   transform: scale(0.82) rotateY(18deg) translateX(-22%) translateY(-5%);
   z-index: 2;
@@ -1727,7 +1727,7 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 
 /* Siguiente: derecha atrás, rotada hacia la izquierda */
 .nos-slide.is-next {
-  opacity: 0.65;
+  opacity: 1;
   pointer-events: auto;
   transform: scale(0.82) rotateY(-18deg) translateX(22%) translateY(-5%);
   z-index: 2;
