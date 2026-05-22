@@ -1568,9 +1568,33 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 
 /* 540px — mobile */
 @media (max-width: 540px) {
+  /* ── Alta Complejidad: centrado correcto en mobile ── */
+  .alta-complejidad .section-container {
+    overflow-x: hidden;
+  }
+
+  .ac-layout {
+    padding: 0;          /* elimina el doble padding con section-container */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .ac-featured,
+  .ac-side {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
   .ac-side {
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
+  }
+
+  .ac-item {
+    min-width: 0;        /* evita que el grid se desborde a la derecha */
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .ac-featured {
