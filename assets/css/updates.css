@@ -419,37 +419,46 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   100% { transform: translate(0px,  0px)   rotate(0deg)    scale(1);    }
 }
 
-/* ─── Fondo base ──────────────────────────────────────────── */
+/* ─── Fondo foto (clinica.jpeg) ───────────────────────────── */
 .hero-bg {
-  background: #030303 !important;
+  background: #000 !important;
   overflow: hidden !important;
 }
 
-/* Gradient ambiental indigo ↔ rose (muy sutil) */
+/* La foto ocupa todo el hero-bg con zoom sutil */
+.hero-bg .hero-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 0 !important;
+  animation: ambientZoom 28s ease-in-out infinite !important;
+}
+
+/* Overlay oscuro sobre la foto — mantiene legibilidad del texto */
 .hero-bg::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 65% 55% at 12% 50%, rgba(99,102,241,0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 65% 55% at 88% 50%, rgba(244,63,94,0.10)  0%, transparent 70%);
-  z-index: 0;
+  background: rgba(0, 10, 30, 0.62);
+  z-index: 1;
   pointer-events: none;
 }
 
-/* Vignette: oscurece arriba y abajo */
+/* Vignette: gradiente superior e inferior */
 .hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(3,3,3,0.72) 0%,
-    transparent       16%,
-    transparent       78%,
-    rgba(3,3,3,0.95)  100%
+    rgba(0,5,18,0.55) 0%,
+    transparent        20%,
+    transparent        72%,
+    rgba(0,5,18,0.90)  100%
   );
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -1638,5 +1647,233 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 
   .alianza-nav {
     display: none;
+  }
+
+  /* carrusel nosotros en mobile */
+  .nos-carousel-outer {
+    height: 360px !important;
+    margin-bottom: 1rem;
+  }
+
+  .nos-slide.is-prev,
+  .nos-slide.is-next {
+    opacity: 0.5 !important;
+    transform: scale(0.78) rotateY(12deg) translateX(-18%) translateY(-3%) !important;
+  }
+
+  .nos-slide.is-next {
+    transform: scale(0.78) rotateY(-12deg) translateX(18%) translateY(-3%) !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CARRUSEL QUIÉNES SOMOS
+═══════════════════════════════════════════════════════════ */
+.nos-carousel-outer {
+  position: relative;
+  height: 520px;
+  perspective: 1000px;
+  overflow: visible;
+  /* Hereda border-radius y clip-path del .quienes-img-wrap original
+     pero los anulamos porque el carrusel necesita overflow visible */
+  clip-path: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.nos-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.nos-slide {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.55) rotateY(45deg);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              z-index 0s;
+  will-change: transform, opacity;
+}
+
+.nos-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Activa: centro, tamaño completo */
+.nos-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) rotateY(0deg) translateX(0) translateY(0);
+  z-index: 3;
+}
+
+/* Anterior: izquierda atrás, rotada hacia la derecha (perspectiva) */
+.nos-slide.is-prev {
+  opacity: 0.65;
+  pointer-events: auto;
+  transform: scale(0.82) rotateY(18deg) translateX(-22%) translateY(-5%);
+  z-index: 2;
+}
+
+/* Siguiente: derecha atrás, rotada hacia la izquierda */
+.nos-slide.is-next {
+  opacity: 0.65;
+  pointer-events: auto;
+  transform: scale(0.82) rotateY(-18deg) translateX(22%) translateY(-5%);
+  z-index: 2;
+}
+
+/* Controles */
+.nos-carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.nos-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.nos-btn:hover {
+  background: #1a5fa8;
+  border-color: #1a5fa8;
+  transform: scale(1.08);
+}
+
+.nos-btn:focus-visible {
+  outline: 2px solid #1a5fa8;
+  outline-offset: 2px;
+}
+
+/* Posicionar badge debajo del carrusel */
+.nos-carousel-outer .quienes-badge {
+  position: absolute;
+  bottom: -60px;   /* debajo de los controles */
+  left: 0;
+  z-index: 10;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PSICOFÍSICO — service card expandida
+═══════════════════════════════════════════════════════════ */
+.service-card--psicofisico {
+  grid-column: span 2;          /* ocupa 2 columnas en el grid */
+}
+
+.psico-hab-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent, #00D1FF);
+  background: rgba(0, 93, 183, 0.12);
+  border: 1px solid rgba(0, 93, 183, 0.35);
+  padding: 0.3rem 0.8rem;
+  border-radius: 2rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.psico-exams-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 1.5rem;
+}
+
+.psico-exams-list li {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.78);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.psico-exams-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent, #00D1FF);
+  font-size: 0.7rem;
+}
+
+.psico-exams-sub {
+  font-size: 0.74rem;
+  color: rgba(255,255,255,0.50);
+}
+
+.psico-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0.75rem 0;
+  padding: 0.85rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 0.75rem;
+}
+
+.psico-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.5;
+}
+
+.psico-info-row svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: var(--accent, #00D1FF);
+}
+
+.psico-no-turno {
+  display: inline-block;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: rgba(0, 93, 183, 0.22);
+  border: 1px solid rgba(0, 93, 183, 0.4);
+  padding: 0.3rem 0.85rem;
+  border-radius: 2rem;
+  margin-top: 0.25rem;
+}
+
+/* en mobile la psicofísico ocupa 1 columna */
+@media (max-width: 720px) {
+  .service-card--psicofisico {
+    grid-column: span 1;
+  }
+
+  .psico-exams-list {
+    grid-template-columns: 1fr;
   }
 }
