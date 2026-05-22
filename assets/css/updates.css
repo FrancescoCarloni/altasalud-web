@@ -1659,21 +1659,6 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
     display: none;
   }
 
-  /* carrusel nosotros en mobile */
-  .nos-carousel-outer {
-    height: 360px !important;
-    margin-bottom: 1rem;
-  }
-
-  .nos-slide.is-prev {
-    transform: scale(0.78) translateX(-18%) translateY(-3%) rotateY(12deg) !important;
-    z-index: 5 !important;
-  }
-
-  .nos-slide.is-next {
-    transform: scale(0.78) translateX(18%) translateY(-3%) rotateY(-12deg) !important;
-    z-index: 5 !important;
-  }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1883,5 +1868,80 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
 @media (max-width: 720px) {
   .psico-exams-list {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE ≤ 767px — Carrusel simple (slider plano, sin 3D)
+   + Fix psicofísico
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* ── Psicofísico: forzar ancho completo ── */
+  .service-card--psicofisico {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    grid-column: 1 / -1 !important;
+  }
+  .service-card--psicofisico .service-card-body {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .psico-info-block {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ── Carrusel: slider plano, un slide a la vez ── */
+  .nos-carousel-outer {
+    height: 280px !important;     /* altura razonable en mobile */
+    overflow: hidden !important;  /* el outer también recorta */
+  }
+
+  .nos-carousel {
+    overflow: hidden !important;  /* recorta slides fuera de pantalla */
+    perspective: none !important;
+  }
+
+  /* todos los slides: posicionados fuera a la derecha por defecto */
+  .nos-slide {
+    opacity: 1 !important;
+    transform: translateX(100%) !important;
+    border-radius: 12px !important;
+    transition: transform 0.45s ease, opacity 0.3s ease !important;
+  }
+
+  /* activo: centrado, al frente */
+  .nos-slide.is-active {
+    transform: translateX(0) !important;
+    z-index: 10 !important;
+  }
+
+  /* anterior: fuera a la izquierda */
+  .nos-slide.is-prev {
+    transform: translateX(-100%) !important;
+    z-index: 5 !important;
+  }
+
+  /* siguiente: fuera a la derecha */
+  .nos-slide.is-next {
+    transform: translateX(100%) !important;
+    z-index: 5 !important;
+  }
+
+  /* badge: pegado a la esquina inferior-izquierda del slide activo */
+  .nos-carousel-outer .quienes-badge {
+    bottom: 12px !important;
+    left: 12px !important;
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+  }
+
+  /* botones debajo, bien separados del carrusel */
+  .nos-carousel-controls {
+    margin-top: 1rem !important;
+    position: relative !important;
+    z-index: 30 !important;
   }
 }
