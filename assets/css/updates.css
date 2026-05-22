@@ -1655,14 +1655,14 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
     margin-bottom: 1rem;
   }
 
-  .nos-slide.is-prev,
-  .nos-slide.is-next {
-    opacity: 1 !important;
-    transform: scale(0.78) rotateY(12deg) translateX(-18%) translateY(-3%) !important;
+  .nos-slide.is-prev {
+    transform: scale(0.78) translateX(-18%) translateY(-3%) perspective(400px) rotateY(12deg) !important;
+    z-index: 5 !important;
   }
 
   .nos-slide.is-next {
-    transform: scale(0.78) rotateY(-12deg) translateX(18%) translateY(-3%) !important;
+    transform: scale(0.78) translateX(18%) translateY(-3%) perspective(400px) rotateY(-12deg) !important;
+    z-index: 5 !important;
   }
 }
 
@@ -1685,7 +1685,7 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   position: relative;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
+  /* sin preserve-3d: z-index funciona normalmente */
 }
 
 .nos-slide {
@@ -1709,28 +1709,28 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   display: block;
 }
 
-/* Activa: centro, tamaño completo */
+/* Activa: centro, al frente */
 .nos-slide.is-active {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(1) rotateY(0deg) translateX(0) translateY(0);
-  z-index: 3;
+  transform: scale(1) translateX(0) translateY(0);
+  z-index: 10;
 }
 
-/* Anterior: izquierda atrás, rotada hacia la derecha (perspectiva) */
+/* Anterior: izquierda, visiblemente detrás */
 .nos-slide.is-prev {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(0.82) rotateY(18deg) translateX(-22%) translateY(-5%);
-  z-index: 2;
+  transform: scale(0.82) translateX(-22%) translateY(-5%) perspective(600px) rotateY(18deg);
+  z-index: 5;
 }
 
-/* Siguiente: derecha atrás, rotada hacia la izquierda */
+/* Siguiente: derecha, visiblemente detrás */
 .nos-slide.is-next {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(0.82) rotateY(-18deg) translateX(22%) translateY(-5%);
-  z-index: 2;
+  transform: scale(0.82) translateX(22%) translateY(-5%) perspective(600px) rotateY(-18deg);
+  z-index: 5;
 }
 
 /* Controles */
