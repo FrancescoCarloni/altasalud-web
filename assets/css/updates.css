@@ -301,6 +301,12 @@
   background-color: rgba(255, 255, 255, 0.92) !important;
 }
 
+/* ─── WORD MASK — descenders fix (g, y, p, q no se cortan) ─── */
+.word {
+  padding-bottom: 0.18em !important;
+  margin-bottom: -0.18em !important;  /* compensa el espacio extra en el flujo */
+}
+
 /* ─── HERO TITLE — Barlow Condensed (igual al logo) ─────────── */
 .hero-title {
   font-family: 'Barlow Condensed', 'Syne', sans-serif !important;
@@ -838,6 +844,9 @@ a, button, [role="button"], [tabindex], input, select, textarea, label {
   font-weight: 700;
   color: #fff;
   margin: 0 0 0.3rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .ac-item-body p {
